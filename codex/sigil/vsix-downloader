@@ -1,0 +1,7 @@
+
+publisher=$1
+extensionname=$2
+version=$3
+
+mkdir -p $HOME/Downloads/VSIX
+wget -c https://${publisher}.gallery.vsassets.io/_apis/public/gallery/publisher/${publisher}/extension/${extensionname}/${version}/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage $HOME/Downloads/VSIX/${extensionname}.vsix

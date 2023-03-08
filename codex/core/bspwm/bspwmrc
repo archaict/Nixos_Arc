@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+bspc monitor -d 1 2 3 4 5
+
+bspc config left_padding 34
+
+bspc config border_width  2
+bspc config window_gap    6
+
+bspc config split_ratio    0.50
+
+bspc config borderless_monocle  true
+bspc config gapless_monocle  true
+
+bspc config remove_disabled_monitors  true
+bspc config remove_unplugged_monitors  true
+
+bspc config click_to_focus  any
+bspc config pointer_follows_monitor  true
+bspc config focus_follows_pointer true
+
+bspc config pointer_modifier  mod4
+bspc config pointer_action1   move
+bspc config pointer_action2   resize_corner
+
+# bspc rule -a Alacritty state=fullscreen
+# bspc rule -a vivaldi desktop='^4'
+# bspc rule -a Emacs state=tiled
+
+# Plasma rules
+bspc rule -a plasmashell state=floating sticky=on border=off
+bspc rule -a krunner state=floating layer=above sticky=on border=off
+bspc rule -a albert state=floating layer=above sticky=on border=off
+
+wallpaper_path=$(shuf -n1 -e ~/Pictures/*)
+wallpaper='"file://'$wallpaper_path'"'
+qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript '
+    var allDesktops = desktops();
+    print (allDesktops);
+    for (i=0;i<allDesktops.length;i++) {{
+        d = allDesktops[i];
+        d.wallpaperPlugin = "org.kde.image";
+        d.currentConfigGroup = Array("Wallpaper",
+                                     "org.kde.image",
+                                     "General");
+        d.writeConfig("Image",'$wallpaper')
+    }}
+'
+
+# Kill the kde systray manager
+export color0_alpha="#AF${color0/'#'}"
+
+killall sxhkd
+sxhkd &
+# sxhkd -c $HOME/.config/sxhkd/sxhkd-bspwm &
+
+killall picom
+sleep 0.2 && picom &
+
+killall touchegg
+touchegg &
+
+# $HOME/.fehbg
+
+# xmodmap $HOME/.xmodmap
+
+# if [ -f "${HOME}/.after_bspwm" ]; then
+#   source "${HOME}/.after_bspwm"
+# fi

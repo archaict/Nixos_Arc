@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# change wallpaper with fzf
+set -e
+clear
+emacsclient -e "(set-display-table-slot standard-display-table 0 ?\ )"
+WALL=$(fd . ~/Pictures/ -e png -e jpg | fzf --height 100% --border none)
+wal -q -i $WALL
+emacsclient -e "(load-theme 'ewal-doom-one)"
+emacsclient -e "(kill-current-buffer)"

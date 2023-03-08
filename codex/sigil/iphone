@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p /tmp/iphone
+ifuse /tmp/iphone
+

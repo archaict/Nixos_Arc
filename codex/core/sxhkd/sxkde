@@ -1,0 +1,27 @@
+# Reload Config
+
+super + alt + {c,r}
+  pkill -USR1 -x sxhkd && notify-send "Refresh Bindings"
+
+# Application
+
+super + Return
+  alacritty
+
+# super + i
+#   env MOZ_USE_XINPUT2=1 firefox
+
+super + i
+  opera
+  
+super + c
+  code --disable-gpu
+
+super + bracket{left,right}
+  light {-U 5,-A 5}
+
+# super + backslash; e
+#   ~/bin/qm end && notify-send "EndeavourOS Start"
+
+super + slash; { slash, p }
+  {dolphin, dolphin ~/Pictures}

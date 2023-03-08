@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+readonly TOKEN="acUpAjaTQJXhQlS52lE54oBvqhojvc2PcpoD6h90N3P"
+# readonly TOKEN="5QyYLexZZmWTnAac8YLA43wg0LrfdP39SmVFujpvqdQ"
+readonly API=https://notify-api.line.me/api/notify
+
+clear
+echo "Archaict"
+if [ -z "$1" ]
+then
+    while [ "$MSG" != "exit" ] && [ "$MSG" != "q" ]
+    do
+        read MSG
+        echo -n
+        curl -s -X POST -H "Authorization: Bearer ${TOKEN}" -F "message=$MSG" ${API} > /dev/null
+    done
+else
+    echo Message Sent: "$*"
+    curl -s -X POST -H "Authorization: Bearer ${TOKEN}" -F "message=$*" ${API} > /dev/null
+fi

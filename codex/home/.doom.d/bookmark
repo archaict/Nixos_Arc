@@ -1,0 +1,154 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Dashboard"
+ (filename . "~/Vault/File/dashboard.md")
+ (front-context-string . "# Dashboard\n\nUNI")
+ (rear-context-string)
+ (position . 1))
+("org-capture-last-stored"
+ (filename . "~/org/roam/20220602154647-lorem.org")
+ (front-context-string . "\nLorem ipsum dol")
+ (rear-context-string . "tle:Lorem Ipsum\n")
+ (position . 88))
+("FleekHauz"
+ (filename . "~/vault/roam/Hauz/Hauz.org")
+ (front-context-string . "#+TITLE:FleekHau")
+ (rear-context-string)
+ (position . 1))
+("Anomaly-game"
+ (filename . "~/vault/Project/Anomaly/")
+ (front-context-string . "src\n  drwxr-xr-x")
+ (rear-context-string . "0K Mar 20 00:03 ")
+ (position . 197))
+("nixos-systemd"
+ (filename . "/etc/nixos/core/base/systemd.nix")
+ (front-context-string . "  # # Kmonad Blu")
+ (rear-context-string . "arget\" ];\n  };\n\n")
+ (position . 494))
+("picom"
+ (filename . "/etc/nixos/codex/core/picom/picom.conf")
+ (front-context-string . "################")
+ (rear-context-string)
+ (position . 1))
+("nixos-lora-local"
+ (filename . "~/vault/roam/Project/Thesis/nixos-lora/")
+ (front-context-string . "configuration.ni")
+ (rear-context-string . "1K Mar 13 14:12 ")
+ (position . 154))
+("mail"
+ (filename . "~/vault/mu4e-dashboard.org")
+ (front-context-string . "* Mu for Emacs (")
+ (rear-context-string . "electric mail/\n\n")
+ (position . 35))
+("aliases"
+ (filename . "/etc/nixos/core/modules/shell/aliases")
+ (front-context-string . "# function abbre")
+ (rear-context-string . "mentioned above\n")
+ (position . 6596))
+("raspi-config"
+ (filename . "/ssh:lora:/home/lora/NixOS-Config/configuration.nix")
+ (front-context-string . "{ config, pkgs, ")
+ (rear-context-string)
+ (position . 1))
+("lora-config"
+ (filename . "/ssh:lora:/home/lora/NixOS-Config/configuration.nix")
+ (front-context-string . "{ config, pkgs, ")
+ (rear-context-string)
+ (position . 1))
+("lora-nixos-config"
+ (filename .
+           #("/ssh:lora:/etc/nixos/configuration.nix" 1 4
+             (helm-ff-file t)
+             5 9
+             (helm-ff-file t)))
+ (front-context-string . "configuration.ni")
+ (rear-context-string . "5K Mar 10 16:59 ")
+ (position . 132))
+("lora-dir"
+ (filename . "/ssh:lora:/home/lora/")
+ (front-context-string . "Music\n  drwxr-xr")
+ (rear-context-string . "0K Mar  3 14:54 ")
+ (position . 673))
+("fish"
+ (filename . "/etc/nixos/core/modules/shell/fish/fish.nix")
+ (front-context-string . "{ config, lib, p")
+ (rear-context-string)
+ (position . 1))
+("doom-init"
+ (filename . "/etc/nixos/codex/home/.doom.d/init.el")
+ (front-context-string . ";;; init.el -*- ")
+ (rear-context-string)
+ (position . 1))
+("emacs-binds"
+ (filename . "/etc/nixos/codex/home/.doom.d/module/binds.el")
+ (front-context-string . "\n(global-set-key")
+ (rear-context-string . "binding: t; -*-\n")
+ (position . 49))
+("exwm-binds"
+ (filename . "/etc/nixos/codex/home/.doom.d/module/exwm/exwm-binds.el")
+ (front-context-string . ";;; module/exwm/")
+ (rear-context-string)
+ (position . 1))
+("exwm-autostarts"
+ (filename . "/etc/nixos/codex/home/.doom.d/module/exwm/exwm-autostart.el")
+ (front-context-string . ";;; module/exwm/")
+ (rear-context-string)
+ (position . 1))
+("doom-packages"
+ (filename . "/etc/nixos/codex/home/.doom.d/packages.el")
+ (front-context-string . ";; Major Mode\n;;")
+ (rear-context-string)
+ (position . 1))
+("doom-dir"
+ (filename . "/etc/nixos/codex/home/.doom.d/")
+ (front-context-string . "custom.el\n  -rw-")
+ (rear-context-string . "3K Mar  5 21:04 ")
+ (position . 475))
+("nixos-regalia"
+ (filename . "/etc/nixos/core/regalia.nix")
+ (front-context-string . "{ config, pkgs, ")
+ (rear-context-string)
+ (position . 1))
+("doom-config"
+ (filename . "/etc/nixos/codex/home/.doom.d/config.org")
+ (front-context-string . "#+TITLE:Emacs Co")
+ (rear-context-string)
+ (position . 1))
+("bin"
+ (filename . "/etc/nixos/codex/sigil/")
+ (front-context-string . "PTSH\n  drwxr-xr-")
+ (rear-context-string . "0K Sep 19 20:09 ")
+ (position . 125))
+("sigil"
+ (filename . "/etc/nixos/codex/sigil/")
+ (front-context-string . "PTSH\n  drwxr-xr-")
+ (rear-context-string . "0K Sep 19 20:09 ")
+ (position . 125))
+("nixos-config"
+ (filename . "/etc/nixos/configuration.nix")
+ (front-context-string . "{ config, lib, p")
+ (rear-context-string)
+ (position . 1))
+("Thesis"
+ (filename . "~/vault/roam/Agenda/20220310140621-thesis.org")
+ (front-context-string . "#+TITLE:Thesis\n/")
+ (rear-context-string)
+ (position . 1))
+("NexSOFT"
+ (filename . "~/vault/roam/Agenda/20220310140348-nexsoft.org")
+ (front-context-string . "#+TITLE:NexSOFT\n")
+ (rear-context-string)
+ (position . 1))
+("Vault"
+ (filename . "~/vault/")
+ (front-context-string . ".secret\n  drwxr-")
+ (rear-context-string . "0K Mar  4 01:18 ")
+ (position . 125))
+("Music"
+ (filename . "~/vault/Music/")
+ (front-context-string . "Indie\n  -rw-r--r")
+ (rear-context-string . "0K Mar  9 17:11 ")
+ (position . 130))
+)

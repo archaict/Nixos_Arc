@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Fedora error on pulseaudio, just in case, this is the command
+# to restore sound and remove white noises.
+sudo hda-verb /dev/snd/hwC0D0 0x1d SET_PIN_WIDGET_CONTROL 0x0
+sudo hda-verb /dev/snd/hwC1D0 0x1d SET_PIN_WIDGET_CONTROL 0x0
+sudo hda-verb /dev/snd/hwC2D0 0x1d SET_PIN_WIDGET_CONTROL 0x0

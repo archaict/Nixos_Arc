@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+export PLANTUML_BIN=/run/current-system/sw/bin/plantuml
+
+pandoc $1.md -o $1.pdf \
+  --from markdown      \
+  --filter pandoc-plantuml \
+  --table-of-contents \
+  --template $HOME/.local/share/pandoc/eisvogel \
+  --table-of-contents  \
+  --listings           \
+  --number-sections    \
+  --pdf-engine=xelatex
+
+# Metadata : --metadata-file
+# CodeBlock: --listings
+# Ch.Fonts : --pdf-engine=xelatex | for mainfont, sansfont, monofont
+# ToC      : --table-of-contents
+
+

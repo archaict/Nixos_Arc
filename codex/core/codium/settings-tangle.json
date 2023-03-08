@@ -1,0 +1,148 @@
+{
+  //Theme
+  "workbench.colorTheme": "Ayu Dark",
+  "workbench.editor.showTabs": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "'Iosevka', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 14,
+  "editor.fontWeight": "700",
+  "editor.fontLigatures": true,
+  "editor.cursorBlinking": "phase",
+  "editor.minimap.enabled": false,
+  "workbench.colorCustomizations": {
+  "workbench.activityBar.visible": false,
+    "editorOverviewRuler.addedForeground": "#0000",
+    "editorOverviewRuler.modifiedForeground": "#0000",
+    "editorOverviewRuler.deletedForeground": "#0000",
+    //   "statusBar.background": "#0f1419",
+    //   "statusBar.noFolderBackground": "#0f1419",
+    //   "statusBar.debuggingBackground": "#0f1419",
+    // "statusBar.debuggingForeground": "#D1D5D9",
+    // "statusBar.foreground": "#D1D5D9"
+  },
+  "breadcrumbs.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "name": "Comment",
+        "scope": [
+          "comment",
+          "comment.block",
+          "comment.block.documentation",
+          "comment.line",
+          "comment.line.double-slash",
+          "punctuation.definition.comment"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+
+  // Default Editor Settings 
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "files.autoSave": "off",
+  "editor.smoothScrolling": false,
+  "editor.cursorSmoothCaretAnimation": false,
+  "security.workspace.trust.enabled": false,
+  "window.customMenuBarAltFocus": false,
+  "window.menuBarVisibility": "hidden",
+
+  // Modeline: Date
+  "dateTime.showAMPM": true,
+  "dateTime.showDayOfWeek": true,
+  "dateTime.showDayOfMonth": true,
+  "dateTime.use24HourClock": false,
+  "dateTime.showMonth": true,
+  "dateTime.customFormat": "dddd, MMMM [the] Do, YYYY | hh:mm A",
+
+  // Errors
+  "errorLens.enabled": true,
+  "errorLens.fontFamily": "Iosevka",
+
+
+  // Terminal
+  "terminal.external.linuxExec": "fish",
+  "terminal.integrated.fontFamily":"Iosevka",
+  "terminal.integrated.fontWeight": "700",
+  "terminal.integrated.cursorBlinking": false,
+  "terminal.integrated.cursorStyle": "block",
+
+  // Vim
+  "vim.enable": true,
+  "vim.leader": "<Space>",
+  "vim.easymotion": true,
+  "vim.foldfix": true,
+  "vim.gdefault": true,
+  "vim.hlsearch": true,
+  "vim.replaceWithRegister": true,
+  "vim.smartRelativeLine": true,
+  "vim.sneak": true,
+  "vim.sneakReplacesF": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "$HOME/.config/VSCodium/User/.vimrc",
+
+  "vim.normalModeKeyBindings": [
+
+    { "before": [ "<Return>" ], "commands": [ "editor.action.openLink" ], "when": "editorLangId == markdown" },
+    { "before": [ "J" ], "after": [ "8", "j" ] },
+    { "before": [ "K" ], "after": [ "8", "k" ] },
+    { "before": [ "<Leader>", "Q" ], "commands": [ "workbench.action.closeWindow" ] },
+    { "before": [ "<Leader>", "o","t" ], "commands": [ "workbench.action.terminal.toggleTerminal" ] },
+    { "before": [ "<Leader>", "o","T" ], "commands": [ "workbench.action.createTerminalEditor" ] },
+    { "before": [ "<Leader>", "g","l" ], "commands": [ "workbench.action.gotoLine" ] },
+
+    { "before": [ "<Leader>", "<Return>" ], "commands": [ "workbench.action.showCommands" ] },
+    { "before": [ "<Leader>", "." ], "commands": [ "projectile.projectFiles" ] },
+    { "before": [ "<Leader>", "w", "q" ], "commands": [ "workbench.action.closeEditorsInGroup" ] },
+    { "before": [ "<Leader>", "f", "p" ], "commands": [ "projectile.projectFiles" ] },
+    { "before": [ "<Leader>", "f", "f" ], "commands": [ "workbench.action.quickOpen" ] },
+    { "before": [ "<Leader>", "f", "r" ], "commands": [ "workbench.action.quickOpen" ] },
+    { "before": [ "<Leader>", "N", "i" ], "commands": [ { "command": "command-runner.run", "args": { "command": "nixs && q" }, "silent": true } ] },
+    { "before": [ "<Leader>", "n", "n" ], "commands": [ { "command": "command-runner.run", "args": { "command": "nmtui && q" }, "silent": true } ] },
+    { "before": [ "<Leader>", "h", "W" ], "commands": [ { "command": "command-runner.run", "args": { "command": "feh --bg-fill (fd . ~/Pictures/ -e png -e jpg -e jpeg | fzf --preview='wal -i {}') && q" }, "silent": true } ] },
+    { "before": [ "<Leader>", "h", "w" ], "commands": [ { "command": "command-runner.run", "args": { "command": "feh --bg-fill (fd . ~/Pictures/ -e png -e jpg -e jpeg | fzf --preview='feh --bg-fill {}') && q" }, "silent": true } ] },
+    { "before": [ "<Leader>", "t", "s", "f" ], "commands": [ { "command": "command-runner.run", "args": { "command": "soundpeats-disconnect >/dev/null 2>&1 && exit", "terminal": "soundpeats" }, "silent": true } ] },
+    { "before": [ "<Leader>", "t", "s", "n" ], "commands": [ { "command": "command-runner.run", "args": { "command": "soundpeats-connect >/dev/null 2>&1 && exit" }, "silent": true } ] },
+    { "before": [ "<Leader>", "p", "p" ], "commands": [ "projectile.projects" ] },
+    { "before": [ "<Leader>", "g", "g" ], "commands": [ "magit.status" ] }
+
+  ],
+  "vim.visualModeKeyBindings": [
+    // { "before": ["J"], "after": ["8", "j"] },
+    // { "before": ["K"], "after": ["8", "k"] }
+  ],
+  "vim.insertModeKeyBindings": [
+    { "before": [ "j", "k" ], "after": [ "<Esc>" ] }
+  ],
+
+  // Language
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "update.mode": "none",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "workbench.activityBar.visible": false
+
+}
+

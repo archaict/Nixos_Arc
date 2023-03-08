@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+OPT=${1}
+case $OPT in
+  connect)
+    pactl unload-module module-bluetooth-discover >/dev/null 2>&1
+    pactl load-module module-bluetooth-discover >/dev/null 2>&1
+    bluetoothctl connect 6C:0D:E1:C6:AE:99 >/dev/null 2>&1
+    ;;
+  disconnect)
+    bluetoothctl disconnect 6C:0D:E1:C6:AE:99 >/dev/null 2>&1
+    ;;
+esac
+

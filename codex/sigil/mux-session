@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Get list of tmux sessions
+sessions=$(tmux list-sessions -F "#S")
+
+# Use fzf to select a session
+selected=$(echo "$sessions" | fzf)
+
+# If a session was selected, attach to it
+if [ -n "$selected" ]; then
+    tmux switch-client -t "$selected"
+fi
+

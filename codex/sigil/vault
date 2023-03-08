@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Author: Archaict
+# Description: Vault management using bash scripting.
+
+if [[ $# -eq 0 ]]; then 
+    OPT=help
+else 
+    OPT="$1" 
+fi
+
+case $OPT in
+
+    --help|-h|help)
+        echo "Vault & Home cleaning tools, have you seen my broom?"
+        echo "Usage: vault.sh [OPTION] ..."
+        echo "Options:"
+        echo "  hm|homefiles: Update Directories"
+        ;;
+
+    hm|homefiles)
+        HOMEFILES="Pictures Games Music"
+        echo "Initializing Directory"
+        for FILE in $HOMEFILES ; do
+            ln -srfn "$HOME"/Vault/"$FILE" "$HOME"
+            echo "Directory: ${FILE}"
+        done
+        ;;
+
+esac
+
+

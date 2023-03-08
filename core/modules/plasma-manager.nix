@@ -1,0 +1,125 @@
+{
+  programs.plasma = {
+    enable = true;
+
+    shortcuts.bismuth = {
+      "decrease_master_size" = "Meta+H";
+      "focus_next_window" = "Meta+J";
+      "focus_prev_window" = "Meta+K";
+      "increase_master_size" = "Meta+L";
+      "move_window_to_next_pos" = "Meta+Down";
+      "move_window_to_prev_pos" = "Meta+Up";
+      "next_layout" = [ ];
+      "prev_layout" = [ ];
+      "push_window_to_master" = "Meta+M";
+      "toggle_monocle_layout" = "Meta+F";
+      "toggle_three_column_layout" = "Meta+Alt+T";
+      "toggle_tile_layout" = "Meta+T";
+      "toggle_window_floating" = "Meta+Ctrl+T";
+    };
+
+    shortcuts = {
+      "kcm_touchpad"."Disable Touchpad" = "Touchpad Off";
+      "kcm_touchpad"."Enable Touchpad" = "Touchpad On";
+      "kcm_touchpad"."Toggle Touchpad" = "Touchpad Toggle";
+      "kded5"."Show System Activity" = "Ctrl+Esc";
+      "kded5"."display" = "Display";
+      "kmix"."decrease_microphone_volume" = "Meta+F2";
+      "kmix"."decrease_volume" = ["Meta+F11" "Volume Down"];
+      "kmix"."increase_microphone_volume" = "Meta+F3";
+      "kmix"."increase_volume" = ["Volume Up" "Meta+F12"];
+      "kmix"."mic_mute" = "Microphone Mute";
+      "kmix"."mute" = "Volume Mute";
+      "ksmserver"."Lock Session" = "Meta+Del";
+      "ksmserver"."Log Out" = "Ctrl+Alt+Del";
+      "ksmserver"."Log Out Without Confirmation" = "Meta+Alt+Ctrl+Del";
+      "ksmserver"."Reboot Without Confirmation" = [ ];
+      "kwin"."Overview" = "Meta+W";
+      "kwin"."ShowDesktopGrid" = "Ctrl+F8";
+      "kwin"."Suspend Compositing" = "Alt+Shift+F12";
+      "kwin"."Switch to Desktop 1" = "Meta+A";
+      "kwin"."Switch to Desktop 2" = "Meta+S";
+      "kwin"."Switch to Desktop 3" = "Meta+D";
+      "kwin"."Switch to Desktop 4" = "Meta+O";
+      "kwin"."Switch to Desktop 5" = "Meta+P";
+      "kwin"."Switch to Next Desktop" = "Meta+Right";
+      "kwin"."Switch to Previous Desktop" = "Meta+Left";
+      "kwin"."Toggle Night Color" = "Meta+N";
+      "kwin"."Walk Through Windows" = "Alt+Tab";
+      "kwin"."Walk Through Windows (Reverse)" = "Alt+Shift+Backtab";
+      "kwin"."Walk Through Windows of Current Application" = "Meta+]";
+      "kwin"."Walk Through Windows of Current Application (Reverse)" = "Meta+[";
+      "kwin"."Window Close" = ["Meta+Q" "Alt+F4"];
+      "kwin"."Window On All Desktops" = "Meta+Alt+U";
+      "kwin"."Window One Desktop Down" = "Meta+Ctrl+Shift+Down";
+      "kwin"."Window One Desktop Up" = "Meta+Ctrl+Shift+Up";
+      "kwin"."Window One Desktop to the Left" = "Meta+Ctrl+Shift+Left";
+      "kwin"."Window One Desktop to the Right" = "Meta+Ctrl+Shift+Right";
+      "kwin"."Window Operations Menu" = "Alt+F3";
+      "kwin"."Window to Desktop 1" = "Meta+Ctrl+A";
+      "kwin"."Window to Desktop 2" = "Meta+Ctrl+S";
+      "kwin"."Window to Desktop 3" = "Meta+Ctrl+D";
+      "kwin"."Window to Desktop 4" = "Meta+Ctrl+O";
+      "kwin"."Window to Desktop 5" = "Meta+Ctrl+P";
+      "kwin"."Window to Next Screen" = "Meta+Alt+Down";
+      "kwin"."Window to Previous Screen" = "Meta+Alt+Up";
+
+      "kwin"."view_actual_size" = "Meta+0";
+      "kwin"."view_zoom_in" = "Meta+=";
+      "kwin"."view_zoom_out" = "Meta+-";
+
+      "org.kde.dolphin.desktop"."_launch" = "Meta+/";
+      "org.kde.krunner.desktop"."RunClipboard" = "Alt+Shift+F2";
+      "org.kde.krunner.desktop"."_launch" = ["Meta+Space" "Search"];
+      "org.kde.plasma.emojier.desktop"."_launch" = "Meta+.";
+      "org.kde.spectacle.desktop"."ActiveWindowScreenShot" = [ ];
+      "org.kde.spectacle.desktop"."CurrentMonitorScreenShot" = [ ];
+      "org.kde.spectacle.desktop"."FullScreenScreenShot" = "Shift+Print";
+      "org.kde.spectacle.desktop"."OpenWithoutScreenshot" = [ ];
+      "org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Print";
+      "org.kde.spectacle.desktop"."WindowUnderCursorScreenShot" = "Meta+Ctrl+Print";
+      "org.kde.spectacle.desktop"."_launch" = "Meta+Print";
+      "org_kde_powerdevil"."Hibernate" = "Hibernate";
+      "org_kde_powerdevil"."PowerDown" = "Power Down";
+      "org_kde_powerdevil"."PowerOff" = "Power Off";
+      "org_kde_powerdevil"."Sleep" = "Sleep";
+      "org_kde_powerdevil"."Toggle Keyboard Backlight" = "Keyboard Light On/Off";
+      "org_kde_powerdevil"."Turn Off Screen" = [ ];
+      "plasmashell"."activate task manager entry 1" = [ ];
+      "plasmashell"."activate task manager entry 2" = [ ];
+      "plasmashell"."activate task manager entry 3" = [ ];
+      "plasmashell"."activate task manager entry 4" = [ ];
+      "plasmashell"."activate task manager entry 5" = [ ];
+      "plasmashell"."activate task manager entry 6" = [ ];
+      "plasmashell"."activate task manager entry 7" = [ ];
+      "plasmashell"."activate task manager entry 8" = [ ];
+      "plasmashell"."activate task manager entry 9" = [ ];
+      "plasmashell"."activate task manager entry 10" = [ ];
+      "plasmashell"."clear-history" = [ ];
+      "plasmashell"."clipboard_action" = "Ctrl+Alt+X";
+      "plasmashell"."cycleNextAction" = [ ];
+      "plasmashell"."cyclePrevAction" = [ ];
+      "plasmashell"."edit_clipboard" = [ ];
+      "plasmashell"."manage activities" = [ ];
+      "plasmashell"."next activity" = "Meta+Tab";
+      "plasmashell"."previous activity" = "Meta+Shift+Tab";
+      "plasmashell"."repeat_action" = "Ctrl+Alt+R";
+      "plasmashell"."show dashboard" = "Ctrl+F12";
+      "plasmashell"."show-barcode" = [ ];
+      "plasmashell"."show-on-mouse-pos" = "Meta+V";
+      "plasmashell"."stop current activity" = [ ];
+      "plasmashell"."switch to next activity" = [ ];
+      "plasmashell"."switch to previous activity" = [ ];
+      "plasmashell"."toggle do not disturb" = [ ];
+      "systemsettings.desktop"."_launch" = ["Tools" "Meta+Alt+P"];
+      "systemsettings.desktop"."kcm-kscreen" = [ ];
+      "systemsettings.desktop"."kcm-lookandfeel" = [ ];
+      "systemsettings.desktop"."kcm-users" = [ ];
+      "systemsettings.desktop"."powerdevilprofilesconfig" = [ ];
+      "systemsettings.desktop"."screenlocker" = [ ];
+    };
+
+    files = {
+    };
+  };
+}

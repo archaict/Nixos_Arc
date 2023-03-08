@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+urxvt -fn "xft:Monospace:size=12" -fg "#ffffff" -bg "#212223" -name menu-fzf +sb -internalBorder 20 -e bash -c 'cmd=$(compgen -c | sort -u | fzf); setsid -f $cmd'

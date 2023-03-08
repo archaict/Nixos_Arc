@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# groupId CompanyName
+# artifactId ProjectName
+
+COMPANY=archaict
+PROJECT=$2
+
+case $1 in
+    create)
+        mvn archetype:generate \
+            -X \
+            -Djava.net.useSystemProxies=true \
+            -DinteractiveMode=false\
+            -DgroupId=$COMPANY \
+            -DartifactId=$PROJECT \
+            -DarchetypeArtifaceId=maven-archetype-quickstart \
+            -DarchetypeVersion=1.4
+        cd $PROJECT
+        touch $PROJECT.org
+        ;;
+    create-offline)
+        mvn archetype:generate \
+            -X \
+            -DinteractiveMode=false\
+            -DarchetypeCatalog=local \
+            -DgroupId=$COMPANY \
+            -DartifactId=$PROJECT \
+            -DarchetypeArtifaceId=maven-archetype-quickstart \
+            -DarchetypeVersion=1.4 -DinteractiveMode=false
+        cd $PROJECT
+        touch $PROJECT.org
+        ;;
+    build)
+        mvn compile package
+        ;;
+    runbuild)
+        mvn compile package
+        clear
+        java -cp target/*.jar archaict.App
+        ;;
+    runbuild-main)
+        mvn compile package
+        clear
+        java -cp target/*.jar archaict.Main
+        ;;
+    run)
+        java -cp target/*.jar archaict.App
+        ;;
+esac

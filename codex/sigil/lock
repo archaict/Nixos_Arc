@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#NORM=/tmp/screenshot.png
+#BLUR=/tmp/screenshot-blur.png
+#rm $NORM
+#scrot $NORM
+#convert $NORM -blur 0x20 $BLUR
+#--clock --timesize=20 \
+convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1) ~/Pictures/Raven_Cybernetics.png ~/Pictures/lockscreen.png
+i3lock -i ~/Pictures/lockscreen.png \
+    --insidecolor=00000000 --ringcolor=30303000 --line-uses-inside --keyhlcolor=811924ff \
+    --bshlcolor=888888ff --separatorcolor=00000000 --insidevercolor=00000000 \
+    --insidewrongcolor=00000000 --ringvercolor=00000000 --ringwrongcolor=888888ff \
+    --radius=120 --ring-width=5 --veriftext="" --wrongtext=" " \
+    --timepos='x+(w/2):y+(h/1.35)' --indpos="x+(w/2):y+796" --timecolor='ffffffff' --datecolor='00000000' --indicator

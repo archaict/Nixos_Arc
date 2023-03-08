@@ -1,0 +1,30 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar {
+  color: #fff;
+  font-size: 10px;
+  background-color: #1d2021;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+// .workspaces {
+//   color: #fafafa;
+// }
+
+.time {
+  font-family: Iosevka SemiBold;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px;
+  padding-bottom:8px;
+  background-color: #1d2021;
+  color: #fff;
+}
+
+.code {
+  padding: 10px;
+}

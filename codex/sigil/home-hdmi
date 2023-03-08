@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Depends on location - Xrandr
+xrandr --output DisplayPort-0 --mode 1920x1080 --rate 60 --above "eDP"
+xrandr --output DisplayPort-1 --mode 1920x1080 --rate 60 --above "eDP"
+# xrandr --output DisplayPort-0 --mode 1920x1080 --rate 60 --right-of "eDP"
+xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Pen Pen (0xb746368a)") eDP
+xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Finger") eDP
+
+killall -q polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload bar &
+  done
+else
+  polybar --reload bar &
+fi
+pulseaudio -k || pulseaudio &
+~/.fehbg
+
+picom

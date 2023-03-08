@@ -1,0 +1,5 @@
+#!/bin/bash
+
+nmcli con mod $1 ipv4.ignore-auto-dns yes
+nmcli con mod $1 ipv4.dns '1.1.1.1 1.0.0.1'
+nmcli con down $1 && nmcli con up $1

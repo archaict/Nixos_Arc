@@ -1,0 +1,190 @@
+(defcfg
+  input   (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output  (uinput-sink "KMonad: Lenovo Yoga 6")
+  fallthrough true
+)
+
+
+(defsrc
+  esc     f1    f2    f3    f4    f5    f6    f7    f8    f9    f1    f11   f12   prnt  ins   del
+  `       1     2     3     4     5     6     7     8     9     0     -     =     bspc
+  tab     q     w     e     r     t     y     u     i     o     p     [     ]     \
+  caps    a     s     d     f     g     h     j     k     l     ;     '     ret
+  lsft    z     x     c     v     b     n     m     ,     .     /     rsft
+  lctl          lmet  lalt  spc                     ralt  rctrl       left  up    down  rght
+
+  home    pgup  pgdn  end
+)
+
+(defalias
+
+  vim  (layer-switch vim)
+  nrm  (layer-switch default)
+
+  ctab (tap-next tab     (layer-toggle ctl))
+  spsy (tap-hold 200 spc (layer-toggle symbols))
+
+  ctb  C-tab
+  cstb  C-S-tab
+
+  abpc A-bspc
+  cbpc C-bspc
+  cdel C-del
+  caps (tap-next esc lmet)
+  lsft (tap-next / lsft)
+  quot (tap-hold 200 ' rsft)
+  smcl (tap-hold 200 ; lctl)
+  bsls (tap-hold 200 \ lmet)
+  sgrv (tap-hold 200 ` lmet)
+
+  cq   C-q
+  cw   C-w
+  ce   C-e
+  cr   C-r
+  ct   C-t
+  cy   C-y
+  cu   C-u
+  ci   C-i
+  co   C-o
+  cp   C-p
+  ca   C-a
+  cs   C-s
+  cd   C-d
+  cf   C-f
+  cg   C-g
+  ch   C-h
+  cj   C-j
+  ck   C-k
+  cl   C-l
+  cz   C-z
+  cx   C-x
+  cc   C-c
+  cv   C-v
+  cb   C-b
+  cn   C-n
+  cm   C-m
+  aspc A-spc
+  cspc C-spc
+  cret C-ret
+
+  cmin C--
+  cpls C-=
+
+  c1   C-1
+  c2   C-2
+  c3   C-3
+  c4   C-4
+  c5   C-5
+  c6   C-6
+  c7   C-7
+  c8   C-8
+  c9   C-9
+  c0   C-0
+
+  a1   A-1
+  a2   A-2
+  a3   A-3
+  a4   A-4
+  a5   A-5
+  a6   A-6
+  a7   A-7
+  a8   A-8
+  a9   A-9
+  a0   A-0
+
+  cf1  left
+  cf2  down
+  cf3  up
+  cf4  rght
+  cf5  C-f5
+  cf6  C-f6
+  cf7  C-f7
+  cf8  C-f8
+  cf9  C-f9
+  cf10 C-f10
+  cf11 C-f11
+  cf12 C-f12
+
+)
+
+;; VI-like-mode-aliases
+(defalias
+  b (around lctl left)
+  w (around lctl rght)
+  v (layer-add visual)
+)
+
+;; VI-selection-like-mode-aliases
+(defalias
+  vb (around rctl S-lft)
+  vw (around rctl S-rght)
+  vlf S-lft
+  vrg S-rght
+  vup S-up
+  vdo S-down
+  vho S-home
+  ven S-end
+  ves (layer-rem visual)
+)
+
+(defalias
+  dd (around (around lctl x) (layer-rem visual))
+  ynk (around (around lctl c) (layer-rem visual))
+  put (around (around lctl c) (layer-rem visual))
+)
+
+(deflayer default
+  esc     f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12   prnt   ins  del
+  @sgrv   1     2     3     4     5     6     7     8     9     0     -     =     bspc
+  @ctab   q     w     e     r     t     y     u     i     o     p     [     ]     @bsls
+  @caps   a     s     d     f     g     h     j     k     l    @smcl @quot  ret
+  lsft    z     x     c     v     b     n     m     ,     .     /    lsft
+  lctl          lmet  lalt        @spsy             lmet  rctrl       left  up    down  rght
+  home    pgup  pgdn  end
+)
+
+(deflayer symbols
+  @vim    @cf1    @cf2    @cf3    @cf4    @cf5    @cf6    @cf7    @cf8    @cf9    @cf10   @cf11   @cf12   _        _      _
+  _       @a1     @a2     @a3     @a4     @a5     @a6     @a7     @a8     @a9     @a0     ~       `       @cbpc
+  @ctb    @cq     @cw     @ce     @cr     @ct     @cy     @cu     @ci     @co     @cp     pgup    pgdn    delete
+  _       @ca     @cs     @cd     @cf     @cg     left    down    up      rght    @cbpc   @abpc   @cret
+  _       @cz     @cx     @cc     @cv     @cb     @cn     @cm     @cstb   @ctb    _       _
+  _               _       _       _                               _       _               _       _       _        _
+  _       _       _       _
+)
+
+(deflayer ctl
+  _       @cf1    @cf2    @cf3    @cf4    @cf5    @cf6    @cf7    @cf8    @cf9    @cf10   @cf11   @cf12   _        _      _
+  _       @c1     @c2     @c3     @c4     @c5     @c6     @c7     @c8     @c9     @c0     _       _       @cbpc
+  tab     @cq     @cw     @ce     @cr     @ct     @cy     @cu     @ci     @co     @cp     pgup    pgdn    _
+  _       @ca     @cs     @cd     @cf     @cg     @ch     @cj     @ck     @cl     @cbpc   @cdel   bspc
+  lsft    @cz     @cx     @cc     @cv     @cb     @cn     @cm     @cstb    @ctb   _       _
+  _               _       _       @aspc                           _       _               _       _       _        _
+  _       _       _       _
+)
+
+
+(deflayer vim
+  @nrm    left    down    up      rght    _       _       _       _       _       _       _       _       _        _      _
+  _       left    down    up      rght    _       _       _       _       _       _       _       _       _
+  _       _       @w      end     @cy     _       _       @cz     @nrm    _       @cv     _       _       _
+  _       home    _       _       _       _       left    down    up      rght    _       _       _
+  _       _       del     _       @v      @b      _       _       _       _       _       _
+
+  _               _       _       _                               @nrm    _               _       _       _        _
+  _       _       _       _
+)
+
+
+(deflayer visual
+  @ves    _       _       _       _       _       _       _       _       _       _       _       _       _        _      _
+  _       _       _       _       _       _       _       _       _       _       _       _       _       _
+  _       _       @vw     @ven    _       _       @ynk    _       _       _       @put    _       _       _
+  _       @vho    _       @dd     _       _       @vlf    @vdo    @vup    @vrg    _       _       _
+  _       _       del     _       _       @vb     _       _       _       _       _       _
+
+  _               _       _       _                               @ves    _               _       _       _        _
+  _       _       _       _
+)
+
+;; vim: ft=lisp

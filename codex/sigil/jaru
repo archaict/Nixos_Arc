@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+CHOICE=$1
+
+touch bin/test.class
+rm $(fd class)
+javac -cp $(find src) -d $(find bin)
+java -cp ./bin/ $CHOICE

@@ -1,0 +1,7 @@
+#+TITLE: README
+#+AUTHOR: Archaict
+
+* What is this?
+  An automatic install for Archaict's home Computer & Laptop
+
+  Run =./dotfiles=

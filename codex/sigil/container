@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# https://kroki.io
+
+OPT=${1}
+
+case ${OPT} in
+  kroki)
+    docker run -p8100:8000 -d yuzutech/kroki
+    ;;
+  plantuml)
+    docker run -d -p 8080:8080 plantuml/plantuml-server:jetty
+    ;;
+  c4)
+    chmod +x /home/$USER/.vscode/extensions/systemticks.c4-dsl-extension-3.1.7/server/c4-language-server/bin/c4-language-server
+    docker run -it --rm -d -p 8000:8080 -v $2:/usr/local/structurizr structurizr/lite
+    ;;
+
+  doc)
+    cd $HOME/Vault/File/Work/
+    docker compose up -d --build
+
+esac

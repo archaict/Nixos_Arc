@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+VBG=$1
+nice xwinwrap -b -s -fs -ni -st -sp -nf -ov -- mpv -wid WID --really-quiet --framedrop=vo --no-audio --panscan="1.0" --loop ~/Pictures/gif/$VBG &
+echo nice xwinwrap -b -s -fs -ni -st -sp -nf -ov -- mpv -wid WID --really-quiet --framedrop=vo --no-audio --panscan="1.0" --loop ~/Pictures/gif/$VBG &

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm ~/.config/nvim/init.vim
+nvim

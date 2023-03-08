@@ -1,0 +1,144 @@
+{ 
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Tangle Config",
+            "type": "shell",
+            "command": "cd /etc/nixos/codex/core/codium && md-tangle -f codium.md && exit",
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false,
+                "panel": "new",
+                "clear": true,
+                "close": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Change Wallpaper: Wal",
+            "type": "shell",
+            "command": "feh --bg-fill (fd . ~/Pictures/ -e png -e jpg -e jpeg | fzf --preview='wal -i {}') && exit",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "panel": "new",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Change Wallpaper: Feh",
+            "type": "shell",
+            "command": "feh --bg-fill (fd . ~/Pictures/ -e png -e jpg -e jpeg | fzf --preview='feh --bg-fill {}') && exit",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "panel": "new",
+                "focus": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Vault home directory update",
+            "type": "shell",
+            "command": "$HOME/bin/vault hm",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Deploy Dotfiles",
+            "type": "shell",
+            "command": "$HOME/bin/schema dotfiles",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Update NixOS",
+            "type": "shell",
+            "command": "schema build",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Network CLI",
+            "type": "shell",
+            "command": "nmtui && exit",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Soundpeats On",
+            "type": "shell",
+            "command": "soundpeats-connect && exit",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "focus": false,
+                "reveal": "never",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Soundpeats Off",
+            "type": "shell",
+            "command": "soundpeats-disconnect && exit",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "focus": false,
+                "reveal": "never",
+                "panel": "new",
+            },
+            "problemMatcher": []
+        }
+        {
+            "label": "Sayonara",
+            "type": "shell",
+            "command": "shutdown -h now",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "focus": false,
+                "reveal": "never",
+                "panel": "new",
+            },
+            "problemMatcher": []
+        }
+        {
+            "label": "Daijoubu",
+            "type": "shell",
+            "command": "shutdown -r now",
+            "presentation": {
+                "echo": false,
+                "close": true,
+                "focus": false,
+                "reveal": "never",
+                "panel": "new",
+            },
+            "problemMatcher": []
+        }
+    ]
+
+ }

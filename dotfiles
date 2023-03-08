@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+# ░░█▀█░█▀▄░█▀▀░█░█░█▀█░▀█▀░█▀▀░▀█▀░░
+# ░░█▀█░█▀▄░█░░░█▀█░█▀█░░█░░█░░░░█░░░
+# ░░▀░▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀▀▀░▀▀▀░░▀░░░
+# ░░█▀▄░█▀█░▀█▀░█▀▀░▀█▀░█░░░█▀▀░█▀▀░░
+# ░░█░█░█░█░░█░░█▀▀░░█░░█░░░█▀▀░▀▀█░░
+# ░░▀▀░░▀▀▀░░▀░░▀░░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░░
+# Dotfiles by @Archaict - Version 1.0
+# This script will deploy the dotfiles
+
+# ░█░█░█▀█░█▀▄░▀█▀░█▀█░█▀▄░█░░░█▀▀░█▀▀
+# ░▀▄▀░█▀█░█▀▄░░█░░█▀█░█▀▄░█░░░█▀▀░▀▀█
+# ░░▀░░▀░▀░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀▀▀░▀▀▀
+# List of dotfiles to be deployed [Vars]
+export CONF="$HOME/.config"
+export BINS="$HOME/bin"
+DOTFILES="autostart.sh alacritty kitty kdeautostart.sh
+          ranger zsh sxhkd discord eww rofi hypr tmux
+          polybar picom kmonad dunst zathura qtile helix
+          touchegg bspwm gromit-mpx.ini starship.toml"
+
+# ░█▀▀░█▀█░█▀▄░█▀▀░█▀▀
+# ░█░░░█░█░█▀▄░█▀▀░▀▀█
+# ░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
+# Initialize the dotfiles
+echo "Initializing Codex..."
+
+for DOTS in $DOTFILES; do
+    rm -rf "${CONF:?}"/"$DOTS"
+    ln -srfn ./codex/core/"$DOTS" "$CONF"
+    echo "${DOTS} initialized"
+done
+
+# echo "Initiating Neo Maxivimist"
+# ln -srfn ./codex/core/nvim "$CONF"/nvim
+
+# ░█▀▀░█▀█░█▄█░█▀▀░█░█
+# ░█░░░█░█░█░█░█▀▀░░█░
+# ░▀▀▀░▀▀▀░▀░▀░▀░░░░▀░
+# Installing Home Files
+
+RUNES=".doom.d .xmonad .mbsyncrc .zshrc .xinitrc .vimrc" # .bashrc .profile
+echo "Moving regalia and thrones"
+
+for RUNE in $RUNES; do
+    rm -rf "${HOME:?}"/"$RUNE"
+    ln -srfn ./codex/home/"$RUNE" "$HOME"/
+    echo "Chanting ${RUNE}"
+done
+
+# ░█▀▄░▀█▀░█▀█░█▀█░█▀▄░█░█
+# ░█▀▄░░█░░█░█░█▀█░█▀▄░░█░
+# ░▀▀░░▀▀▀░▀░▀░▀░▀░▀░▀░░▀░
+# Moving 0 1 0 1 to binaries
+echo "Rebuilding Codex"
+ln -srfn ./codex/sigil "$BINS"
+if [[ ! -d "$XDG_DATA_HOME"/history ]]; then
+    mkdir -p "$XDG_DATA_HOME"/history
+    touch "$XDG_DATA_HOME"/history/.history
+    touch "$XDG_DATA_HOME"/history/.zsh_history
+fi
+
+echo "Generate Assets"
+ln -srfn ./codex/core/pandoc "$HOME"/.local/share/
+
+echo "Dotfiles deployed!"

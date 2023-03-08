@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Variables
+SOLO='--output eDP --primary --mode 1920x1080 --pos 0x0 --rotate normal'
+MONITOR='--output DisplayPort-1 --pos 0x-1080 --mode 1920x1080 --rotate normal'
+
+# Function
+help ()
+{
+    echo "                              "
+    echo " Menu                         "
+    echo "                              "
+    echo "   s) Laptop screen only      "
+    echo "   m) Connect to Monitor      "
+    echo "   r) NixOS Rebuild [Flakes]  "
+    echo "   d) Deploy dotfiles         "
+    echo "   w) Wallpaper picker        "
+    echo "                              "
+}
+
+if [[ $# -eq 0 ]];
+then
+    OPT=help
+else
+    OPT=$1
+fi
+
+case $OPT in
+
+    help|-h|h)
+        help
+        ;;
+
+    mrr|mirror)
+        xrandr $SOLO --output DisplayPort-1 --same-as eDP
+        notify-send "HDMI Mirror" && sleep 1 && picom &
+        xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Pen Pen (0xb746368a)") eDP &
+        xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Finger") eDP &
+        ~/.fehbg
+        ;;
+
+    s|solo|laptop)
+        xrandr $SOLO --output DisplayPort-1 --off
+        notify-send "HDMI OFF" && sleep 1 && picom &
+        xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Pen Pen (0xb746368a)") eDP &
+        xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Finger") eDP &
+        ~/.fehbg
+        ;;
+
+    mon|monitor|extended)
+        xrandr $SOLO $MONITOR
+        notify-send "Dual Display On" && sleep 1 && picom &
+        xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Pen Pen (0xb746368a)") eDP &
+        xinput --map-to-output $(xinput list --id-only "Wacom HID 5203 Finger") eDP &
+        ~/.fehbg
+        ;;
+
+    i|b|nixos-rebuild|build|install|update)
+        sudo nixos-rebuild switch
+        # --flake /etc/nixos \
+        # --option use-binary-cache false \
+        # --option build-use-subtitutes false
+        ;;
+
+    d|dotfiles|dots)
+        cd /etc/nixos/ && ./dotfiles
+        notify-send "Dotfiles Deployed!"
+        ;;
+
+    fetch)
+        nix-prefetch-url --unpack ${2}
+        ;;
+
+    wallpaper-wal|ww)
+        feh --bg-fill "$(fd . ~/Pictures/ -e png -e jpg -e jpeg | fzf --preview='wal -i {}')"
+        ;;
+
+    w|wallpaper|wall)
+        feh --bg-fill "$(fd . ~/Pictures/ -e png -e jpg -e jpeg | fzf --preview='feh --bg-fill {}')"
+        ;;
+
+esac

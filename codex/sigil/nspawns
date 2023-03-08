@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+sudo systemd-nspawn --setenv=DISPLAY=:0 -D ~/container/$1 $2
+
+#usage nspawns arch firefox

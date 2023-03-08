@@ -1,0 +1,96 @@
+[
+
+    // Movement  /////////////////////////////////////////////////////////////////////////////////////////////////[ MVT ]///
+
+    // Default
+    { "key": "ctrl+q", "command": "", "when": "" },
+
+    // Window Resize
+    { "key": "ctrl+h", "command": "workbench.action.decreaseViewWidth", "when": "activeEditorGroupIndex == 1"},
+    { "key": "ctrl+l", "command": "workbench.action.increaseViewWidth", "when": "activeEditorGroupIndex == 1"},
+    { "key": "ctrl+l", "command": "workbench.action.decreaseViewWidth", "when": "activeEditorGroupIndex >= 2"},
+    { "key": "ctrl+h", "command": "workbench.action.increaseViewWidth", "when": "activeEditorGroupIndex >= 2"},
+
+    // Focus Group
+    { "key": "ctrl+j", "command": "workbench.action.focusNextGroup" },
+    { "key": "ctrl+k", "command": "workbench.action.focusPreviousGroup" },
+
+    // File Explorer Movement
+    { "key": "j", "command": "list.focusDown", "when": "fileExplorerFocus" },
+    { "key": "k", "command": "list.focusUp", "when": "fileExplorerFocus" },
+
+
+
+    // Focus /////////////////////////////////////////////////////////////////////////////////////////////////////[ FCS ]///
+
+    // Terminal Toggle
+    { "key": "win+u", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "ctrl+enter", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "win+;", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "ctrl+q", "command": "workbench.action.terminal.toggleTerminal", "when": "terminalFocus" },
+
+    // Focus in Editor while Terminal Visible
+    { "key": "ctrl+j", "command": "workbench.action.terminal.focus", "when": "activePanel == terminal"},
+    { "key": "ctrl+k", "command": "workbench.action.focusActiveEditorGroup", "when": "activePanel == terminal" },
+    { "key": "ctrl+l", "command": "workbench.action.focusNextGroup","when": "terminalIsOpen && activePanel == terminal"},
+    { "key": "ctrl+h", "command": "workbench.action.focusPreviousGroup" ,"when": "terminalIsOpen && activePanel == terminal"},
+
+    // { "key": "ctrl+shift+e", "command": "workbench.action.terminal.focus" },
+    // { "key": "alt+shift+e", "command": "workbench.action.terminal.new" },
+    // { "key": "ctrl+shift+e", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
+    // { "key": "ctrl+e ctrl+e", "command": "workbench.action.terminal.toggleTerminal" },
+    // { "key": "ctrl+e ctrl+w", "command": "workbench.action.terminal.focusTabs" },
+    // { "key": "ctrl+e ctrl+q", "command": "workbench.action.terminal.kill" },
+    // { "key": "ctrl+e ctrl+n", "command": "workbench.action.terminal.new" },
+
+
+
+    // Toggle Explorer ///////////////////////////////////////////////////////////////////////////////////////////[ TEX ]///
+
+    { "key": "f4", "command": "workbench.action.toggleActivityBarVisibility" },
+    { "key": "alt+s", "command": "workbench.action.toggleSidebarVisibility" },
+
+    // Sidebar
+    { "key": "ctrl+b", "command": "workbench.action.toggleSidebarVisibility", "when": "editorFocus" },
+    { "key": "ctrl+b", "command": "-workbench.action.toggleSidebarVisibility", "when": "explorerViewletVisible" },
+    { "key": "ctrl+j", "command": "workbench.action.toggleSidebarVisibility", "when": "explorerViewletVisible" },
+    { "key": "ctrl+k", "command": "workbench.action.toggleSidebarVisibility", "when": "explorerViewletVisible" },
+    { "key": "q", "command": "workbench.action.toggleSidebarVisibility", "when": "explorerViewletVisible" },
+    { "key": "ctrl+w",  "command": "workbench.action.toggleSidebarVisibility", 
+        "when": "searchViewletVisible || explorerViewletVisible || activeViewlet == workbench.view.extensions" },
+    { "key": "ctrl+q",  "command": "workbench.action.toggleSidebarVisibility",
+        "when": "searchViewletVisible || explorerViewletVisible || editorFocus && explorerViewletVisible || activeViewlet == workbench.view.extensions" },
+
+
+
+    // Search Bar
+    { "key": "up", "command": "search.action.focusPreviousSearchResult", "when": "hasSearchResult || inSearchEditor" },
+    { "key": "down", "command": "search.action.focusNextSearchResult", "when": "hasSearchResult || inSearchEditor" },
+
+
+
+    // File Utils ////////////////////////////////////////////////////////////////////////////////////////////////[ FUT ]///
+
+    { "key": "ctrl+n", "command": "explorer.newFile", "when": "explorerViewletVisible" },
+
+
+
+    // Extensions ////////////////////////////////////////////////////////////////////////////////////////////////[ EXT ]///
+
+    // Edamagit
+    { "key": "g g", "command": "cursorTop", "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/" },
+    { "key": "g r", "command": "magit.refresh", "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/" },
+    { "key": "tab", "command": "extension.vim_tab", "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'" },
+    { "key": "tab", "command": "-extension.vim_tab", "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'" },
+    { "key": "x", "command": "magit.discard-at-point", "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/" },
+    { "key": "k", "command": "-magit.discard-at-point" },
+    { "key": "-", "command": "magit.reverse-at-point", "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/" },
+    { "key": "v", "command": "-magit.reverse-at-point" },
+    { "key": "shift+-", "command": "magit.reverting", "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/" },
+    { "key": "shift+v", "command": "-magit.reverting" },
+    { "key": "shift+o", "command": "magit.resetting", "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/" },
+    { "key": "shift+x", "command": "-magit.resetting" },
+    { "key": "x", "command": "-magit.reset-mixed" },
+    { "key": "ctrl+u x", "command": "-magit.reset-hard" }
+
+]

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pkill mpv
+vbgrun $1 > ~/bin/vbg.log

@@ -1,0 +1,14 @@
+nnoremap : ;
+nnoremap ; :
+
+nnoremap j gj
+nnoremap k gk
+
+nnoremap J 10j
+nnoremap K 10k
+
+let mapleader=" "
+
+nnoremap <leader>ww :call VSCodeNotify('workbench.action.focusNextGroup')<CR>
+
+nnoremap <leader>r :source ~/.config/nvim/init.vim<cr> 

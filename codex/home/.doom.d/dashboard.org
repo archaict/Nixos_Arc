@@ -1,0 +1,12 @@
+ #+TITLE:Dashboard
+/Front-End for your day/
+
+* Everyday Life
+** [[/home/archaict/vault/mu4e-dashboard.org][Mail]]
+
+* Work
+** [[id:edcf689c-5302-464d-999c-5be78be897aa][Thesis]]
+- FILE: [[~/vault/roam/Project/Thesis][Location]]
+
+** [[id:a7e617ba-6b8c-462b-ba30-15b32bd20489][NexSOFT]]
+- FILE: [[~/vault/roam/Project/NexSOFT][Location]]

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+touch bin/class.class && rm $(fd class) && javac -cp $(find src) -d $(find bin) && java -cp $(fd bin) Main

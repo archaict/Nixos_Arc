@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Enable option to switch dns on normal distro
+
+if [ $1 == 'one' ]; then
+  nmcli con mod $2 ipv4.ignore-auto-dns yes
+  nmcli con mod $2 ipv4.dns '1.1.1.1 1.0.0.1'
+  nmcli con down $2 && nmcli con up $2
+elif [ $1 == 'google' ]; then
+  nmcli con mod $2 ipv4.ignore-auto-dns yes
+  nmcli con mod $2 ipv4.dns '8.8.8.8 8.8.4.4'
+  nmcli con down $2 && nmcli con up $2
+elif [ $1 == 'original' ]; then
+  nmcli con mod $2 ipv4.ignore-auto-dns yes
+  nmcli con mod $2 ipv4.dns '118.98.44.100 118.98.44.10'
+  nmcli con down $2 && nmcli con up $2
+fi

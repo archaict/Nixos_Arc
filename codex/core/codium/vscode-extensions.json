@@ -1,0 +1,74 @@
+[
+  {
+    "publisher": "mosbasik",
+    "name": "sxhkdrc-syntax",
+    "sha256": "0d910538be7e93c65d1548766beca4e4bdd21fdb2addec73af9eae82b90f638d",
+    "version": "0.0.1"
+  },
+  {
+    "publisher": "mutantdino",
+    "name": "resourcemonitor",
+    "sha256": "cf1875b2b7be79a90a495d1d097530b44fcd3452b2e8c8613fa0331cd050b80d",
+    "version": "1.0.7"
+  },
+  {
+    "publisher": "ms-vscode-remote",
+    "name": "remote-ssh",
+    "sha256": "2447211ad097a3040280b9cadbf44877ffb0eb0f9060d0965154af5b9331b6c4",
+    "version": "0.81.2022060215"
+  },
+  {
+    "publisher": "DeepInThought",
+    "name": "vscode-shell-snippets",
+    "sha256": "6668af19c4fdf168b2fa7e28a9091620dadfb329c9a650995ca9d292917f352a",
+    "version": "0.3.1"
+  },
+  {
+    "publisher": "vscodevim",
+    "name": "vim",
+    "sha256": "76d22580e0f345da0c2a71bdd39d197025f7c35e40fd1dc568c73e67296f05b5",
+    "version": "1.22.2"
+  },
+  {
+    "publisher": "teabyii",
+    "name": "ayu",
+    "sha256": "f8816a8169622abfaa8c12e6425cc5e385cd6cdec1af96b5d7dbfd5809d93aee",
+    "version": "1.0.5"
+  },
+  {
+    "publisher": "usernamehw",
+    "name": "errorlens",
+    "sha256": "0e39828f05fa804b65a0f64ac694e5e3ce4569c469b1f8953f4667094b5eab9f",
+    "version": "3.5.1"
+  },
+  {
+    "publisher": "bodil",
+    "name": "file-browser",
+    "sha256": "456e2f9b41ee9bd01e37846aecc4893881e700b5342f5b412ca8da44b03684bf",
+    "version": "0.2.10"
+  },
+  {
+    "publisher": "foam",
+    "name": "foam-vscode",
+    "sha256": "73eea8d33c43d25e1cdbc5ae694d37a70bec1f6a901c16749accdf1013ac0065",
+    "version": "0.18.4"
+  },
+  {
+    "publisher": "bbenoist",
+    "name": "nix",
+    "sha256": "ab0c6a386b9b9507953f6aab2c5f789dd5ff05ef6864e9fe64c0855f5cb2a07d",
+    "version": "1.0.1"
+  },
+  {
+    "publisher": "fabiospampinato",
+    "name": "vscode-todo-plus",
+    "sha256": "75a28c78550f6526a7ac5bbd27a9a4dd9566973f1966ab996b7a9a5924db4a3b",
+    "version": "4.18.4"
+  },
+  {
+    "publisher": "platformio",
+    "name": "platformio-ide",
+    "sha256": "909f2ad9c192ba3907fa9920156fbc44c3b7f21fbbb8b1646920ae5d863ac9ef",
+    "version": "2.5.0"
+  }
+]

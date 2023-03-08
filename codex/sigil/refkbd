@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+notify-send "Keychron Refresh"
+rm /tmp/kmonad-keychron-k12.kbd && sudo pkill kmonad && bkbd

@@ -1,0 +1,149 @@
+#!/usr/bin/env bash
+OPTION="${1}"
+DOMAIN_ADDRESS="${2}"
+PORT="${3}"
+APPNAME="deploy"
+nginx-template-file () {
+cat << EOF | sudo tee /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+server {
+    listen 80;
+    server_name ${DOMAIN_ADDRESS};
+    access_log /var/log/nginx/${DOMAIN_ADDRESS}/access.log;
+    location / {
+        proxy_pass http://127.0.0.1:${PORT};
+        proxy_set_header Host \$host;
+    }
+}
+EOF
+}
+case ${OPTION} in
+  -h|--help|"")
+    echo " "
+    echo "Usage: ./${APPNAME} [OPTION]... [ARGS]... "
+    echo "       ./${APPNAME} [OPTION]... [ARGS]... [PORT]..."
+    echo " "
+    echo "-n/--new          create new domain"
+    echo "-f/--fill         fill file for domain"
+    echo "-n, --new         register domain to nginx."
+    echo "-f, --fill        fill file needed for nginx, READ BELOW!"
+    echo "-c, --certbot     use certbot to deploy SSL certificate."
+    echo "-rm, --remove     remove file related to deployed nginx "
+    echo "                  (log, sites-[available|enabled]."
+    echo "-u,  up           enable domain access"
+    echo "-d,  down         disable domain access"
+    echo "-ns, new-static   register domain to nginx with static page."
+    echo " "
+    echo "Usage step:"
+    echo "./${APPNAME} -n hello.world.com"
+    echo "./${APPNAME} -f hello.world.com 8000"
+    echo "./${APPNAME} -u hello.world.com"
+    echo "./${APPNAME} -c hello.world.com"
+    echo " "
+    echo "ONE LINER:"
+    echo "./${APPNAME} --auto hello.world.com 8000"
+    echo " "
+    echo "NOTES for 'certbot':"
+    echo "If you've deployed certbot before, please input:"
+    echo " "
+    echo "[ 1: Attempt to reinstall this existing certificate ]"
+    echo "[ 2: Redirect ]"
+    echo " "
+    echo "Otherwise, create new and fill with your email when asked."
+    ;;
+  --auto|auto|generate|gen)
+    # Create directory for domain
+    sudo mkdir -p /var/log/nginx/${DOMAIN_ADDRESS}
+    sudo touch /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    sudo chown -R www-data:adm /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    echo ${DOMAIN_ADDRESS} created.
+    # Fill with nginx-template-file
+    nginx-template-file ${DOMAIN_ADDRESS}
+    echo ${DOMAIN_ADDRESS} has been filled.
+    # Link to sites-available
+    sudo ln -srfn /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf
+    echo ${DOMAIN_ADDRESS} is linked to /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf
+    # Generate SSL using Certbot
+    sudo certbot --nginx -d ${DOMAIN_ADDRESS}
+    echo SSL certificate deployed.
+    sudo systemctl restart nginx
+    ;;
+  # USAGE: ./${APPNAME} new $DOMAIN_ADDRESS
+  # description: Create directory for domain
+  -n|--new|new)
+    sudo mkdir -p /var/log/nginx/${DOMAIN_ADDRESS}
+    sudo touch /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    sudo chown -R www-data:adm /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    echo ${DOMAIN_ADDRESS} created.
+    ;;
+  # USAGE: ./${APPNAME} fill $DOMAIN_ADDRESS $PORT
+  # description: fill with nginx-template-file
+  -f|--fill|fill)
+    nginx-template-file ${DOMAIN_ADDRESS}
+    echo ${DOMAIN_ADDRESS} has been filled.
+    ;;
+  # USAGE: ./${APPNAME} rm $DOMAIN_ADDRESS
+  # description: remove existing domain configuration
+  -rm|--remove|rm)
+    sudo rm -rf /var/log/nginx/${DOMAIN_ADDRESS}
+    sudo rm /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    sudo rm /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf
+    echo  ${DOMAIN_ADDRESS} removed.
+    sudo systemctl restart nginx
+    echo  nginx has been reloaded.
+    # sudo rm /var/www/${DOMAIN_ADDRESS}
+    ;;
+  # USAGE: ./${APPNAME} static $DOMAIN_ADDRESS
+  # description: create static html inside /var/www/domain/index.html
+  -s|--static|--static-site|static)
+    sudo mkdir -p /var/www/${DOMAIN_ADDRESS}
+    sudo touch /var/www/${DOMAIN_ADDRESS}/index.html
+    echo Hello from ${DOMAIN_ADDRESS} | sudo tee /var/www/${DOMAIN_ADDRESS}/index.html
+    echo Static site for ${DOMAIN_ADDRESS} created.
+    ;;
+  # USAGE: ./${APPNAME} new-static $DOMAIN_ADDRESS
+  # description: create domain configuration with static html inside /var/www/domain/index.html
+  -ns|--new-static|new-static)
+    # Create directory for domain
+    sudo mkdir -p /var/log/nginx/${DOMAIN_ADDRESS}
+    sudo touch /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    sudo chown -R www-data:adm /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf
+    echo ${DOMAIN_ADDRESS} created.
+    # Create html inside /var/www/domain/
+    sudo mkdir -p /var/www/${DOMAIN_ADDRESS}
+    sudo touch /var/www/${DOMAIN_ADDRESS}/index.html
+    echo Hello from ${DOMAIN_ADDRESS} | sudo tee /var/www/${DOMAIN_ADDRESS}/index.html
+    echo Static site for ${DOMAIN_ADDRESS} created.
+    ;;
+  -rs|--remove-static|--remove-static-site|rm-static-site)
+    # remove html inside /var/www/domain/
+    sudo rm -rf /var/www/${DOMAIN_ADDRESS}/index.html
+    echo Static site for ${DOMAIN_ADDRESS} removed.
+    ;;
+  # USAGE: ./${APPNAME} up $DOMAIN_ADDRESS
+  # description: Link site to available
+  -u|-l|-ln|--link|--up|up)
+    sudo ln -srfn /etc/nginx/sites-available/${DOMAIN_ADDRESS}.conf /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf
+    echo ${DOMAIN_ADDRESS} is linked to /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf
+    sudo systemctl restart nginx
+    echo  nginx has been reloaded.
+    ;;
+  # USAGE: ./${APPNAME} down $DOMAIN_ADDRESS
+  # description: unlink site to available
+  -d|-ul|--unlink|--down|down)
+    sudo rm /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf
+    sudo systemctl restart nginx
+    echo /etc/nginx/sites-enabled/${DOMAIN_ADDRESS}.conf is unlinked from sites-enabled
+    ;;
+  # USAGE: ./${APPNAME} cert $DOMAIN_ADDRESS
+  # description: generate SSL certificate for domain
+  -c|-ct|--certbot|cert|certificate)
+    sudo certbot --nginx -d ${DOMAIN_ADDRESS}
+    sudo systemctl restart nginx
+    echo SSL certificate deployed.
+    ;;
+esac
+# case $3 in
+#   "")
+#     echo empty
+#     ;;
+# esac

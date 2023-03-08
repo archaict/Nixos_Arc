@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: rcomp
+# key: rcomp
+# --
+
+class ${1:Component} extends React.Component {
+
+    constructor(props) {
+        super(props);
+        $0
+    }
+
+    render = () => {
+        return <>
+            $2
+        </>;
+    }
+}
+
+export default $1;

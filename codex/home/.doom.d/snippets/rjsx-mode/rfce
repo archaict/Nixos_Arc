@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: rfce
+# key: rfce
+# --
+
+import React from 'react'
+
+function $0() {
+  return <div>$1</div>
+}
+
+export default $0

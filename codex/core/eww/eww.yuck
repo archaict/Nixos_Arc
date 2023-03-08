@@ -1,0 +1,38 @@
+(defwidget bar []
+    (box :orientation "v"
+				(code)
+        (time)
+      )
+  )
+
+(defwidget time []
+  (box	:orientation "v"
+      :class "time"
+      :valign "end"
+  (button	:onclick "scripts/popup calendar"
+      :class "time-hour" hour)
+  (button	:onclick "scripts/popup calendar"
+      :class "time-min"  min)
+;;(button	:onclick "scripts/popup calendar"
+;;    :class "time-sec"  sec)
+  ))
+
+(defpoll hour	:interval "1s"	"date '+%H'")
+(defpoll min	:interval "1s"	"date '+%M'")
+;;(defpoll sec	:interval "1s"	"date '+%S'")
+
+(defwidget code []
+  (box	:orientation "v"
+      :class "start"
+  ))
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "24px"
+                      :height "100%"
+                      :anchor "top left")
+  :reserve (struts :side "left" :distance "24px")
+  (bar))

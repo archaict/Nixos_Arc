@@ -1,0 +1,21 @@
+$ /nix/store/jc7as05r5267pgxi5dhsy5n51h4ds4ji-ghc-9.0.2-with-packages/bin/ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -v0 -outputdir /home/archaict/.xmonad/build-x86_64-linux -o /home/archaict/.xmonad/xmonad-x86_64-linux
+
+xmonad.hs:46:29: warning: [-Wdeprecations]
+    In the use of ‘docksEventHook’
+    (imported from XMonad.Hooks.ManageDocks):
+    Deprecated: "Use docks instead."
+   |
+46 |         , handleEventHook = docksEventHook
+   |                             ^^^^^^^^^^^^^^
+
+xmonad.hs:134:55: warning: [-Woverflowed-literals]
+    Literal -20 is out of the GHC.Word.Word32 range 0..4294967295
+    |
+134 |         , ("C-M1-h"   , withFocused (keysMoveWindow (-20,0)))
+    |                                                       ^^
+
+xmonad.hs:136:57: warning: [-Woverflowed-literals]
+    Literal -20 is out of the GHC.Word.Word32 range 0..4294967295
+    |
+136 |         , ("C-M1-k"   , withFocused (keysMoveWindow (0,-20)))
+    |                                                         ^^

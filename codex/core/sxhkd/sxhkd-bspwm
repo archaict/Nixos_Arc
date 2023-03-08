@@ -1,0 +1,32 @@
+#///// BSPWM //////////////////#
+# super + alt + r
+#     ~/.config/bspwm/bspwmrc && notify-send "Reload BSPWM"
+
+super + alt + r
+  pkill -USR1 -x sxhkd -c $HOME/.config/sxhkd/sxhkd-bspwm && notify-send "Refresh BSPWM Bindings"
+
+super + F10
+  killall plcom || picom &
+
+super + q
+  bspc node -c
+
+# Monocle toggle
+super + f
+  bspc desktop -l next
+
+super + {j,k}
+  bspc node -f {next,prev}
+
+super + shift + {h,j,k,l}
+  bspc node -p {west,south,north,east}
+
+super + g
+	bspc node -p cancel
+
+# focus or send to the given desktop
+super + {a,s,d,o,p}
+	bspc desktop -f {1,2,3,4,5}
+
+super + shift + {a,s,d,o,p}
+	bspc desktop -d {1,2,3,4,5}

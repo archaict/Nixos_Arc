@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+OPT=${1}
+quickemu --vm $OPT.conf --display gtk
+
+case $1 in
+  dev)
+    cd $HOME/Vault/Development/Virtualization/Endeavour
+    quickemu --vm endeavouros.conf --display none
+    ;;
+  end|endeavour)
+    cd $HOME/Vault/Development/Virtualization/Endeavour
+    quickemu --vm endeavouros.conf --display gtk
+    ;;
+  mint)
+    cd $HOME/Vault/Development/Virtualization/LinuxMint/
+    quickemu --vm linuxmint.conf --display gtk
+    ;;
+esac

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Variables
+SOLO='--output eDP --primary --mode 1920x1080 --pos 0x0 --rotate normal'
+MONITOR='--output DisplayPort-1 --pos 0x-1080 --mode 1920x1080 --rotate normal'
+
+# Function
+help ()
+{
+    echo "| Help Menu                   "
+}
+
+if [[ $# -eq 0 ]];
+then
+    OPT=help
+else
+    OPT=$1
+fi
+
+case $OPT in
+
+    h)
+        help
+        ;;
+    iu)
+        cd $HOME/Vault/File/Work/Integrasia_Utama
+        nix-shell --run fish
+        ;;
+
+esac

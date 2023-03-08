@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+INITFOLDER=$1
+git remote set-url origin git@gitlab.com:archaict/$INITFOLDER
+git remote -v

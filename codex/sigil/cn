@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo systemd-nspawn -b -D ~/container/$1

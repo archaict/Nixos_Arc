@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+pandoc $1.org -o $1.pdf \
+  --from org           \
+  --template $HOME/.local/share/pandoc/eisvogel \
+  --table-of-contents  \
+  --listings           \
+  --number-sections    \
+  --pdf-engine=xelatex
+
+# Metadata : --metadata-file
+# CodeBlock: --listings
+# Ch.Fonts : --pdf-engine=xelatex | for mainfont, sansfont, monofont
+# ToC      : --table-of-contents

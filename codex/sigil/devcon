@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+case "$1" in
+  ms)
+    ssh devcon "cd microservices/ms-activity && docker compose up -d"
+    ssh devcon "cd microservices/ms-projectcharter && docker compose up -d"
+  ;;
+  up)
+    cd ~/Vault/Development/Virtualization/Arch
+    vagrant up
+    ssh devcon "cd microservices/ms-activity && docker compose up -d"
+    ssh devcon "cd microservices/ms-projectcharter && docker compose up -d"
+  ;;
+  ssh)
+    cd ~/Vault/Development/Virtualization/Arch
+    vagrant up
+  ;;
+esac
+

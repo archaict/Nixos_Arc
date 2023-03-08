@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "ecommerce",
+			"path": "../../../../../home/archaict/vault/Project/ecommerce"
+		},
+		{
+			"name": "nixos-lora",
+			"path": "../../../../../home/archaict/vault/roam/Project/Thesis/nixos-lora"
+		},
+		{
+			"name": "File",
+			"path": "../../../../../home/archaict/vault/File"
+		},
+		{
+			"path": "../../../../../home/archaict/vault/Project/ospro"
+		}
+	],
+	"settings": {}
+}

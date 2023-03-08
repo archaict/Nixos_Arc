@@ -1,0 +1,140 @@
+# Reload Config
+
+super + alt + c
+  pkill -USR1 -x sxhkd && notify-send "Refresh Bindings"
+
+# Application
+
+super + {i,slash,F9}
+ {opera,alacritty -e ranger,gromit-mpx}
+
+# super + semicolon
+  scrcpy -m 1920 -w --fullscreen -b 16M --shortcut-mod lalt --disable-screensaver
+  # scrcpy -w --fullscreen -b 16M --shortcut-mod lalt --disable-screensaver
+
+# super + backslash
+#   spotify
+
+super + control + alt + BackSpace
+  shutdown -h now
+
+# super + control + alt + Delete
+#   restart
+
+# super + 7
+#   schema light
+
+# super + 8
+#   schema dark
+
+Print
+  flameshot gui
+
+super + F10
+  ~/bin/schema solo
+
+F10
+  ~/bin/schema monitor
+
+# Toggles
+
+super + 0
+  pkill polybar || polybar -r bar
+  # pkill polybar || ~/bin/launch-polybar &
+
+# Functions
+super + BackSpace
+  bkbd && xinput_fix
+
+F6
+  ~/bin/mouse-toggle
+
+super + F6
+  ~/bin/pebble_mouse
+
+super + F4
+  ~/bin/mic-toggle
+
+super + F{2,3}
+  {~/bin/miconf dec-vol,~/bin/miconf inc-vol}
+
+F{11,12}
+  light {-U 2,-A 2}
+
+super + bracket{left,right}
+  light {-U 1,-A 1}
+
+XF86Audio{Play,Pause}
+  playerctl play-pause
+
+# super + {BackSpace,minus,equal}
+#   {mpc toggle, mpc prev, mpc next}
+
+super + {minus,equal}
+  amixer sset Master {'5%-','5%+'}
+  # pactl set-sink-volume 1 {-5%,+5%}
+
+F{1,2,3}
+  amixer sset Master {toggle,'5%-','5%+'}
+
+# F1
+#   pactl set-sink-mute 1 toggle
+# pactl set-sink-volume 1 {-5%,+5%}
+
+XF86MonBrightness{Down,Up}
+  light {-U 1,-A 1}
+XF86Audio{Mute,LowerVolume,RaiseVolume}
+  amixer sset Master {toggle,'5%-','5%+'}
+
+# Operation
+
+F7
+  physlock
+
+super + Delete
+  rofi -show p -modi p:rofi-power-menu
+
+super + Return
+  alacritty
+
+super + c
+  code --disable-gpu
+
+super + v
+  code --disable-gpu
+
+# super + c
+#   codium --disable-gpu
+# alacritty -e nvim
+
+super + b
+  emacs --daemon && notify-send "Emacs Daemon Started.."
+ # {alacritty -e nvim}
+
+#///// BSPWM //////////////////#
+
+super + F10
+  killall plcom || picom &
+
+super + q
+  bspc node -c
+
+# Monocle toggle
+super + f
+  bspc desktop -l next
+
+super + {j,k}
+  bspc node -f {next,prev}
+
+super + shift + {h,j,k,l}
+  bspc node -p {west,south,north,east}
+
+super + g
+	bspc node -p cancel
+
+# focus or send to the given desktop
+super + {a,s,d,o,p}
+	bspc desktop -f {1,2,3,4,5}
+
+super + shift + {a,s,d,o,p}
+	bspc desktop -d {1,2,3,4,5}

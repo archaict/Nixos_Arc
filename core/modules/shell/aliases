@@ -1,0 +1,182 @@
+alias nixs="sudo nixos-rebuild -v switch --flake /etc/nixos --option use-binary-cache false --option build-use-subtitutes false"
+alias i="nixs"
+alias nixfast="nixs --fast"
+alias shr="source ~/.config/fish/config.fish";
+alias tcl="tty-clock -sc -C 7"
+
+###########
+# Aliases #
+###########
+
+alias sc="sudo systemctl "
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias grep="grep --color=auto";
+alias ls="ls --color=auto --group-directories-first";
+alias l="ls --color=auto --group-directories-first";
+alias lt="ls --human-readable --size -1 -S --classify";
+alias la="ls -A --color=auto --group-directories-first";
+
+alias v='nvim'
+alias vi='vi'
+alias vim="nvim";
+alias sv="sudo -E nvim";
+alias vorg="nvim ~/Dropbox/vault/roam/notebook.org"
+
+alias kali="cd ~/Virtualize/Kali && vm kali"
+alias slavery="cd ~/Virtualize/Slave && vm kali"
+
+alias rm="rm --preserve-root";
+alias rmdir="sudo rm -Rfi";
+
+alias cl="clear"
+# GIT
+alias gcl='git clone '
+alias ga='git add '
+alias gs='git status '
+alias gm='git commit -m '
+alias gp='git push'
+
+alias sudo="sudo "
+alias mv="mv -iv"
+alias cp="cp -v"
+alias ln="ln -iv"
+alias df="df -hT"
+alias du="du -hs * | sort -h"
+
+alias cpy="xclip"
+alias pst="xclip -o"
+alias cs="xclip -selection clipboard"
+alias vs="xclip -o -selection clipboard"
+alias q="exit"
+alias qa="exit"
+alias :q='exit'
+
+#alias fping= "ping -c 10"
+
+alias tobash='sudo chsh $USER -s /bin/bash && echo "Now log out."'
+alias tozsh='sudo chsh $USER -s /bin/zsh && echo "Now log out."'
+alias tofish='sudo chsh $USER -s /usr/bin/fish "Now log out."'
+
+alias free="free -mt"
+alias wget="wget -c"
+
+alias userlist="cut -d: -f1 /etc/passwd"
+alias merge="xrdb -merge ~/.Xresources"
+alias psa="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias hw="hwinfo --short"
+
+#grub update
+alias update-grub="sudo grub2-mkconfig -o /boot/grub2/grub.cfg"
+alias update-fc='sudo fc-cache -fv'
+
+#vim everything
+alias vlightdm="sudo nvim /etc/lightdm/lightdm.conf"
+alias vpacman="sudo nvim /etc/pacman.conf"
+alias vgrub="sudo nvim /etc/default/grub"
+alias vconfgrub="sudo nvim /boot/grub/grub.cfg"
+alias vmkinitcpio="sudo nvim /etc/mkinitcpio.conf"
+alias vmirrorlist="sudo nvim /etc/pacman.d/mirrorlist"
+alias vsddm="sudo nvim /etc/sddm.conf"
+
+#buhbye
+alias ssn="sudo shutdown now"
+alias sr="sudo reboot"
+alias bye="shutdown -h now"
+alias sayonara="shutdown -h now"
+alias djb="reboot"
+alias c="clear"
+alias cln="clean"
+
+#sudo based
+alias cpu-gui="sudo cpupower-gui"
+alias white="feh --bg-scale ~/Pictures/Raven_Cybernetics_WHITE.png"
+alias dark="feh --bg-scale ~/Pictures/Raven_Cybernetics.png"
+
+#chmod
+alias chx="chmod +x "
+
+#Android
+alias adbs="cd ~/Phones/adb"
+alias phims="cd ~/Phones/IMG"
+alias fatals="sudo fastboot flash system ./system.img && sudo fastboot -w && sudo fastboot reboot"
+
+alias ph-list="adb shell pm list packages"
+alias ph-enable="adb shell pm enable --user 0 "
+alias ph-disable="adb shell pm disable-user --user 0 "
+
+alias checkrain="sudo checkra1n"
+
+alias mc="sudo machinectl"
+
+#Editors
+alias em="emacsclient -nw "
+alias e='emacsclient -nw'
+alias doom="$HOME/.emacs.d/bin/doom"
+alias doomsync="~/.emacs.d/bin/doom sync"
+alias doomdoctor="~/.emacs.d/bin/doom doctor"
+alias doomupgrade="~/.emacs.d/bin/doom upgrade"
+alias doompurge="~/.emacs.d/bin/doom purge"
+alias em='f -e emacsclient'
+alias ersh="pkill emacs && emacs --daemon"
+
+alias nv='f -e nvim'
+
+alias j='z'
+alias o='a -e xdg-open'
+
+alias nmap_open_ports="nmap --open"
+alias nmap_list_interfaces="nmap --iflist"
+alias nmap_slow="sudo nmap -sS -v -T1"
+alias nmap_fin="sudo nmap -sF -v"
+alias nmap_full="sudo nmap -sS -T4 -PE -PP -PS80,443 -PY -g 53 -A -p1-65535 -v"
+alias nmap_check_for_firewall="sudo nmap -sA -p1-65535 -v -T4"
+alias nmap_ping_through_firewall="nmap -PS -PA"
+alias nmap_fast="nmap -F -T5 --version-light --top-ports 300"
+alias nmap_detect_versions="sudo nmap -sV -p1-65535 -O --osscan-guess -T4 -Pn"
+alias nmap_check_for_vulns="nmap --script=vuln"
+alias nmap_full_udp="sudo nmap -sS -sU -T4 -A -v -PE -PS22,25,80 -PA21,23,80,443,3389 "
+alias nmap_traceroute="sudo nmap -sP -PE -PS22,25,80 -PA21,23,80,3389 -PU -PO --traceroute "
+alias nmap_full_with_scripts="sudo nmap -sS -sU -T4 -A -v -PE -PP -PS21,22,23,25,80,113,31339 -PA80,113,443,10042 -PO --script all "
+alias nmap_web_safe_osscan="sudo nmap -p 80,443 -O -v --osscan-guess --fuzzy "
+alias nmap_ping_scan="nmap -n -sP"
+
+alias msfvenom-list-all='cat ~/.msf4/msfvenom/all'
+alias msfvenom-list-nops='cat ~/.msf4/msfvenom/nops'
+alias msfvenom-list-payloads='cat ~/.msf4/msfvenom/payloads'
+alias msfvenom-list-encoders='cat ~/.msf4/msfvenom/encoders'
+alias msfvenom-list-formats='cat ~/.msf4/msfvenom/formats'
+alias msfvenom-list-generate='_msfvenom-list-generate'
+
+# alias nikto="nikto -Tuning 123457890abcde -C all $@"
+
+alias neo-minivimist="nvim -S ~/.config/nvim/.neo-minivimist"
+alias roam="cd ~/Dropbox/vault/roam"
+alias ytd="youtube-dl "
+alias ytdf="youtube-dl -F "
+
+alias barstart='sudo iptables -I INPUT -s 192.168.68.0/24 -p tcp --dport 24800 --syn -j ACCEPT && barrier'
+alias barsthap='sudo iptables -I INPUT -s 192.168.68.0/24 -p tcp --dport 24800 --syn -j REJECT && pkill barrier'
+alias kcon='sudo iptables -I INPUT -p tcp --dport 1714:1764 -j ACCEPT'
+
+alias docker-bbt='docker run -it hackersploit/bugbountytoolkit /bin/zsh'
+alias sndpt='bluetoothctl connect 6C:0D:E1:C6:AE:99'
+alias sndptd='bluetoothctl disconnect 6C:0D:E1:C6:AE:99'
+
+alias scrcpym='scrcpy -m 1080 -f -S -w --shortcut-mod "lalt"'
+alias flush-trash='rm -rf /home/archaict/.Trash/files/*'
+alias bluetooth-refresh=' pactl unload-module module-bluetooth-discover && pactl load-module module-bluetooth-discover'
+alias soundpeats-connect="bluetooth-refresh && bluetoothctl connect 6C:0D:E1:C6:AE:99"
+alias soundpeats-disconnect="bluetoothctl disconnect 6C:0D:E1:C6:AE:99"
+alias wallpaper='feh --bg-fill (fd . ~/Pictures/ -e png -e jpg | fzf)'
+# alias wls='wal -i (fd . ~/Pictures/ -e png -e jpg | fzf) && emacsclient -e "(load-theme \'ewal-doom-one)"'
+
+alias sage='eval (ssh-agent -c)'
+alias cont='distrobox'
+
+# vim: ft=bash
